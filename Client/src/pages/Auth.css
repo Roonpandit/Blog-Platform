@@ -1,0 +1,251 @@
+/* Auth.css */
+.auth-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f9fafb;
+  padding: 20px;
+  font-family: 'Inter', sans-serif;
+}
+
+.auth-container {
+  width: 100%;
+  max-width: 450px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  padding: 40px;
+  transition: all 0.3s ease;
+}
+
+.auth-container:hover {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.auth-title {
+  color: #1e8a5f;
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 30px;
+  text-align: center;
+  position: relative;
+}
+
+.auth-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background-color: #36b37e;
+  border-radius: 3px;
+}
+
+.auth-form {
+  margin-top: 30px;
+}
+
+.auth-form .form-group {
+  margin-bottom: 24px;
+  position: relative;
+}
+
+.auth-form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #374151;
+  font-size: 14px;
+}
+
+.auth-form input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background-color: #f9fafb;
+  font-size: 15px;
+  color: #1f2937;
+  transition: all 0.2s ease;
+}
+
+.auth-form input:focus {
+  outline: none;
+  border-color: #36b37e;
+  box-shadow: 0 0 0 3px rgba(54, 179, 126, 0.15);
+  background-color: #ffffff;
+}
+
+.auth-form input.error {
+  border-color: #ef4444;
+  background-color: #fef2f2;
+}
+
+.auth-form input.error:focus {
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15);
+}
+
+.auth-form .error-message {
+  color: #ef4444;
+  font-size: 13px;
+  margin-top: 6px;
+  font-weight: 500;
+}
+
+.auth-form .input-icon {
+  position: absolute;
+  top: 40px;
+  right: 16px;
+  color: #9ca3af;
+  cursor: pointer;
+}
+
+.auth-form .input-icon:hover {
+  color: #6b7280;
+}
+
+.auth-button {
+  width: 100%;
+  padding: 14px;
+  background-color: #36b37e;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.auth-button:hover {
+  background-color: #1e8a5f;
+  transform: translateY(-1px);
+}
+
+.auth-button:active {
+  transform: translateY(1px);
+}
+
+.auth-button .button-icon {
+  font-size: 18px;
+}
+
+.auth-footer {
+  margin-top: 24px;
+  text-align: center;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.auth-footer a {
+  color: #36b37e;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.auth-footer a:hover {
+  color: #1e8a5f;
+  text-decoration: underline;
+}
+
+/* Loading Skeleton Styles */
+.auth-skeleton {
+  animation: pulse 1.5s infinite ease-in-out;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  border-radius: 8px;
+}
+
+@keyframes pulse {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.skeleton-title {
+  height: 36px;
+  width: 140px;
+  margin: 0 auto 30px;
+}
+
+.skeleton-input {
+  height: 50px;
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+.skeleton-button {
+  height: 50px;
+  width: 100%;
+  margin-top: 12px;
+}
+
+.skeleton-text {
+  height: 20px;
+  width: 80%;
+  margin: 24px auto 0;
+}
+
+/* Additional Auth Components */
+.auth-divider {
+  display: flex;
+  align-items: center;
+  margin: 24px 0;
+  color: #9ca3af;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background-color: #e5e7eb;
+}
+
+.auth-divider span {
+  padding: 0 12px;
+  font-size: 14px;
+}
+
+.social-buttons {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.social-button {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px;
+  border-radius: 8px;
+  background-color: #f9fafb;
+  border: 1px solid #e5e7eb;
+  color: #4b5563;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.social-button:hover {
+  background-color: #f3f4f6;
+  border-color: #d1d5db;
+}
+
+.social-button .icon {
+  font-size: 18px;
+}

@@ -1,0 +1,22 @@
+.user-posts-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.user-posts-header {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.user-posts-title {
+  font-size: 2rem;
+  color: #333;
+}
+
+@media (max-width: 768px) {
+  .user-posts-title {
+    font-size: 1.75rem;
+  }
+}
+

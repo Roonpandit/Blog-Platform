@@ -1,0 +1,40 @@
+.favorite-posts-page {
+  padding: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.favorite-posts-header {
+  margin-bottom: 32px;
+  position: relative;
+}
+
+.favorite-posts-header::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 60px;
+  height: 4px;
+  background-color: #36b37e;
+  border-radius: 2px;
+}
+
+.favorite-posts-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #333;
+  margin: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .favorite-posts-page {
+    padding: 16px;
+  }
+  
+  .favorite-posts-title {
+    font-size: 24px;
+  }
+}
