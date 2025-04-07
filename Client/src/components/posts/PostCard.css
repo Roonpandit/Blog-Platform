@@ -6,7 +6,6 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  margin-bottom: 24px;
   border: 1px solid rgba(0, 0, 0, 0.06);
 }
 
@@ -59,7 +58,6 @@
   align-items: center;
   font-size: 0.875rem;
   color: #718096;
-  margin-bottom: 12px;
   flex-wrap: wrap;
 }
 
@@ -90,9 +88,9 @@
 
 .post-card .post-tags {
   display: flex;
-  flex-wrap: wrap;
-  margin-bottom: 12px;
-  gap: 8px;
+  flex-direction: row;
+  margin-bottom: 2px;
+  gap: auto;
 }
 
 .post-card .post-tag {
@@ -114,14 +112,13 @@
   color: #4a5568;
   font-size: 0.95rem;
   line-height: 1.6;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   flex-grow: 1;
 }
 
 .post-card .post-footer {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
   margin-top: auto;
 }
 
@@ -151,8 +148,8 @@
 
 .post-card .post-actions {
   display: flex;
+  flex-direction: row;
   align-items: center;
-  gap: 12px;
 }
 
 .post-card .post-action {
@@ -166,6 +163,7 @@
   padding: 4px;
   border-radius: 4px;
   transition: all 0.2s ease;
+  margin-bottom: 0px;
 }
 
 .post-card .post-action i {
