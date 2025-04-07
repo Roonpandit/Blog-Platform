@@ -6,9 +6,25 @@ import { api } from "../../utils/api"
 import { AuthContext } from "../../context/AuthContext"
 import PostCard from "./PostCard"
 import Pagination from "../common/Pagination"
-import Loader from "../common/Loader"
 import Alert from "../common/Alert"
 import "./PostList.css"
+
+// SVG Icon for filter
+const FilterIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+  </svg>
+)
+
+// Empty state icon
+const EmptyStateIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#718096" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+    <line x1="8" y1="12" x2="16" y2="12"></line>
+    <line x1="8" y1="16" x2="16" y2="16"></line>
+    <line x1="8" y1="8" x2="16" y2="8"></line>
+  </svg>
+)
 
 const PostList = ({ endpoint, title, emptyMessage }) => {
   const [posts, setPosts] = useState([])
@@ -72,7 +88,7 @@ const PostList = ({ endpoint, title, emptyMessage }) => {
   const handleFavorite = async (postId) => {
     try {
       const response = await api.post(`/api/posts/${postId}/favorite`)
-      
+       
       if (user) {
         // Avoid mutating context directly
         const updatedUser = { ...user, favoritePosts: response.data.favoritePosts }
@@ -96,8 +112,25 @@ const PostList = ({ endpoint, title, emptyMessage }) => {
     window.scrollTo(0, 0)
   }
 
+  // Skeleton loading display
   if (loading && posts.length === 0) {
-    return <Loader />
+    return (
+      <div className="post-list-container">
+        {title && <h1 className="post-list-title">{title}</h1>}
+        <div className="skeleton-list">
+          {[1, 2, 3, 4, 5, 6].map((i) => (
+            <div key={i} className="skeleton-card">
+              <div className="skeleton-image"></div>
+              <div className="skeleton-content">
+                <div className="skeleton-title"></div>
+                <div className="skeleton-meta"></div>
+                <div className="skeleton-excerpt"></div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    )
   }
 
   return (
@@ -106,6 +139,7 @@ const PostList = ({ endpoint, title, emptyMessage }) => {
 
       {tag && (
         <div className="tag-filter">
+          <FilterIcon />
           <span>Filtered by tag: </span>
           <span className="tag">{tag}</span>
         </div>
@@ -115,6 +149,7 @@ const PostList = ({ endpoint, title, emptyMessage }) => {
 
       {posts.length === 0 ? (
         <div className="empty-state">
+          <EmptyStateIcon />
           <p>{emptyMessage || "No posts found."}</p>
         </div>
       ) : (

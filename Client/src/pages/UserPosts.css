@@ -1,22 +1,138 @@
 .user-posts-page {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 2rem 1rem;
+  width: 100%;
+  padding: 40px 24px;
 }
 
 .user-posts-header {
-  margin-bottom: 2rem;
-  text-align: center;
+  margin-bottom: 32px;
+  position: relative;
 }
 
 .user-posts-title {
   font-size: 2rem;
-  color: #333;
+  font-weight: 700;
+  color: #2d3748;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 16px;
 }
 
+.user-posts-title::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 70px;
+  height: 4px;
+  background-color: #36b37e;
+  border-radius: 2px;
+}
+
+.user-posts-info {
+  display: flex;
+  align-items: center;
+  margin-top: 16px;
+}
+
+.user-posts-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: rgba(54, 179, 126, 0.1);
+  color: #1e8a5f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 1.25rem;
+  margin-right: 16px;
+}
+
+.user-posts-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.user-posts-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-posts-count {
+  font-size: 0.95rem;
+  color: #718096;
+  display: flex;
+  align-items: center;
+  margin-top: 4px;
+}
+
+.user-posts-count svg {
+  margin-right: 6px;
+}
+
+/* Skeleton loading styles */
+.user-posts-page .skeleton-header {
+  margin-bottom: 32px;
+}
+
+.user-posts-page .skeleton-title {
+  height: 40px;
+  width: 60%;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 4px;
+}
+
+.user-posts-page .skeleton-info {
+  display: flex;
+  align-items: center;
+  margin-top: 16px;
+}
+
+.user-posts-page .skeleton-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  margin-right: 16px;
+}
+
+.user-posts-page .skeleton-details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.user-posts-page .skeleton-detail {
+  height: 16px;
+  width: 100px;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 4px;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Responsive styles */
 @media (max-width: 768px) {
+  .user-posts-page {
+    padding: 24px 16px;
+  }
+  
   .user-posts-title {
     font-size: 1.75rem;
   }
 }
-
