@@ -1,7 +1,7 @@
 import axios from "axios"
 
 export const api = axios.create({
-  baseURL: "http://localhost:2007",
+  baseURL: "https://blog-platform-jhl9.onrender.com",
 })
 
 // Request interceptor to add auth token
