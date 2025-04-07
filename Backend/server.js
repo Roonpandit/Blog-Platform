@@ -20,7 +20,19 @@ const app = express();
 
 // Middleware
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      const allowedOrigins = process.env.ALLOWED_ORIGINS.split(",");
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true,
+  })
+);
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Connect to MongoDB
