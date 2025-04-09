@@ -1,9 +1,7 @@
-// controllers/postController.js
 const Post = require('../models/Post');
 const User = require('../models/User');
 const { deleteImage } = require('../middleware/imageUpload');
 
-// Create a new post
 exports.createPost = async (req, res) => {
   try {
     const { title, content, tags } = req.body;
@@ -26,7 +24,6 @@ exports.createPost = async (req, res) => {
   }
 };
 
-// Get all posts (with pagination and filtering options)
 exports.getPosts = async (req, res) => {
   try {
     const { page = 1, limit = 10, tag } = req.query;
@@ -63,7 +60,6 @@ exports.getPosts = async (req, res) => {
   }
 };
 
-// Get a single post by ID
 exports.getPostById = async (req, res) => {
   try {
     const post = await Post.findById(req.params.id)
@@ -87,7 +83,6 @@ exports.getPostById = async (req, res) => {
   }
 };
 
-// Update a post
 exports.updatePost = async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
@@ -96,7 +91,6 @@ exports.updatePost = async (req, res) => {
       return res.status(404).json({ message: 'Post not found' });
     }
 
-    // Check if user is the author of the post
     if (post.author.toString() !== req.user._id.toString()) {
       return res.status(403).json({ message: 'Not authorized to update this post' });
     }
@@ -104,7 +98,6 @@ exports.updatePost = async (req, res) => {
     const { title, content, tags } = req.body;
     const tagsArray = tags ? tags.split(',').map(tag => tag.trim()) : post.tags;
 
-    // Handle image update if a new image is uploaded
     if (req.body.image && post.cloudinaryId) {
       await deleteImage(post.cloudinaryId);
     }
@@ -124,7 +117,6 @@ exports.updatePost = async (req, res) => {
   }
 };
 
-// Delete a post
 exports.deletePost = async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
@@ -133,17 +125,14 @@ exports.deletePost = async (req, res) => {
       return res.status(404).json({ message: 'Post not found' });
     }
 
-    // Check if user is the author of the post or an admin
     if (post.author.toString() !== req.user._id.toString() && req.user.role !== 'admin') {
       return res.status(403).json({ message: 'Not authorized to delete this post' });
     }
 
-    // Delete image from cloudinary if exists
     if (post.cloudinaryId) {
       await deleteImage(post.cloudinaryId);
     }
 
-    // Changed from post.remove() to deleteOne()
     await Post.deleteOne({ _id: post._id });
 
     res.json({ message: 'Post deleted successfully' });
@@ -152,7 +141,6 @@ exports.deletePost = async (req, res) => {
   }
 };
 
-// Like a post
 exports.likePost = async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
@@ -161,12 +149,9 @@ exports.likePost = async (req, res) => {
       return res.status(404).json({ message: 'Post not found' });
     }
 
-    // Check if user already liked the post
     if (post.likes.includes(req.user._id)) {
-      // Unlike the post
       post.likes = post.likes.filter(like => like.toString() !== req.user._id.toString());
     } else {
-      // Like the post
       post.likes.push(req.user._id);
     }
 
@@ -178,7 +163,6 @@ exports.likePost = async (req, res) => {
   }
 };
 
-// Add post to favorites
 exports.addToFavorites = async (req, res) => {
   try {
     const user = await User.findById(req.user._id);
@@ -188,14 +172,11 @@ exports.addToFavorites = async (req, res) => {
       return res.status(404).json({ message: 'Post not found' });
     }
 
-    // Check if post is already in favorites
     if (user.favoritePosts.includes(req.params.id)) {
-      // Remove from favorites
-      user.favoritePosts = user.favoritePosts.filter(
+     user.favoritePosts = user.favoritePosts.filter(
         postId => postId.toString() !== req.params.id
       );
     } else {
-      // Add to favorites
       user.favoritePosts.push(req.params.id);
     }
 
@@ -207,7 +188,6 @@ exports.addToFavorites = async (req, res) => {
   }
 };
 
-// Get user's posts
 exports.getUserPosts = async (req, res) => {
   try {
     const { page = 1, limit = 10 } = req.query;
@@ -231,7 +211,6 @@ exports.getUserPosts = async (req, res) => {
   }
 };
 
-// Get user's favorite posts
 exports.getFavoritePosts = async (req, res) => {
   try {
     const user = await User.findById(req.user._id).populate({

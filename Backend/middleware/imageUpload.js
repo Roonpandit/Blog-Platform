@@ -11,11 +11,9 @@ exports.uploadImage = async (req, res, next) => {
       folder: 'blog-platform'
     });
 
-    // Add cloudinary data to request
     req.body.image = result.secure_url;
     req.body.cloudinaryId = result.public_id;
 
-    // Remove file from server after upload to cloudinary
     fs.unlinkSync(req.file.path);
     
     next();
