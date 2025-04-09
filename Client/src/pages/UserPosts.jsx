@@ -1,5 +1,3 @@
-"use client"
-
 import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
 import { api } from "../utils/api"
@@ -46,8 +44,6 @@ const UserPostsSkeleton = () => {
           </div>
         </div>
       </div>
-
-      {/* Skeleton for PostList will be handled by the PostList component */}
     </div>
   )
 }
@@ -76,9 +72,8 @@ const UserPosts = () => {
           setUserAvatar(response.data.posts[0].author.avatar)
         }
         // Set post count if available in response
-        if (response.data.totalPosts) {
-          setPostCount(response.data.totalPosts)
-        }
+        setPostCount(response.data.posts.length)
+
       } else {
         // If user has no posts, we need to fetch user info directly
         const userResponse = await api.get(`/api/users/${userId}`)

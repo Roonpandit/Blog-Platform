@@ -1,6 +1,8 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
+
 import './Header.css';
 
 const Sidebar = () => {
@@ -8,6 +10,7 @@ const Sidebar = () => {
   const location = useLocation();
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Simulate loading for 1 second
@@ -29,7 +32,10 @@ const Sidebar = () => {
   if (loading) {
     return <SidebarSkeleton />;
   }
-
+ const handleLogout = () => {
+    logout();
+    navigate('/');
+  }
   return (
     <>
       <div className={`sidebar-overlay ${isCollapsed ? 'hidden' : ''}`} onClick={toggleSidebar}></div>
@@ -184,7 +190,7 @@ const Sidebar = () => {
               </div>
               <div className="sidebar-user-info">
                 <div className="sidebar-user-name">{user.username}</div>
-                <button className="sidebar-logout" onClick={logout}>Log Out</button>
+                <button className="sidebar-logout" onClick={handleLogout}>Log Out</button>
               </div>
             </div>
           </div>

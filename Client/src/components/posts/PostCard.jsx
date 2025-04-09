@@ -58,7 +58,7 @@ const PostCard = ({ post, onLike, onFavorite, showActions = true, loading = fals
   const isFavorite = user && user.favoritePosts && user.favoritePosts.includes(post._id)
 
   return (
-    <div className="post-card">
+    <div className="post-cards">
       {post.image && (
         <div className="post-image">
           <img src={post.image || "/placeholder.svg"} alt={post.title} />
