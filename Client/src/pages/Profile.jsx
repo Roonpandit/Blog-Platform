@@ -25,11 +25,7 @@ const Profile = () => {
       errors.username = "Username is required";
     }
 
-    if (formData.email.trim() === "") {
-      errors.email = "Email is required";
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      errors.email = "Email is invalid";
-    }
+    // Email is read-only, so no need to validate
 
     if (formData.password && formData.password.length < 6) {
       errors.password = "Password must be at least 6 characters";
@@ -47,7 +43,6 @@ const Profile = () => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
 
-    // Clear field error when user starts typing
     if (formErrors[name]) {
       setFormErrors({ ...formErrors, [name]: "" });
     }
@@ -58,37 +53,33 @@ const Profile = () => {
 
     if (validateForm()) {
       try {
-        // Only include fields that have changed
         const updatedData = {};
 
         if (formData.username !== user.username) {
           updatedData.username = formData.username;
         }
 
-        if (formData.email !== user.email) {
-          updatedData.email = formData.email;
-        }
+        // Email is not updatable
 
         if (formData.password) {
           updatedData.password = formData.password;
         }
 
-        // Only make API call if there are changes
         if (Object.keys(updatedData).length > 0) {
           await updateProfile(updatedData);
           setSuccessMessage("Profile updated successfully");
 
-          // Clear password fields after successful update
-          setFormData({
-            ...formData,
+          // Reset password fields
+          setFormData((prev) => ({
+            ...prev,
             password: "",
             confirmPassword: "",
-          });
+          }));
         } else {
           setSuccessMessage("No changes to update");
         }
       } catch (err) {
-        // Error is handled in the AuthContext
+        // Error is set via context
       }
     }
   };
@@ -133,18 +124,17 @@ const Profile = () => {
               id="email"
               name="email"
               value={formData.email}
-              onChange={handleChange}
-              className={formErrors.email ? "error" : ""}
+              readOnly
+              className={`readonly-input ${formErrors.email ? "error" : ""}`}
             />
+
             {formErrors.email && (
               <div className="error-message">{formErrors.email}</div>
             )}
           </div>
 
           <div className="form-group">
-            <label htmlFor="password">
-              New Password (leave blank to keep current)
-            </label>
+            <label htmlFor="password">New Password</label>
             <input
               type="password"
               id="password"

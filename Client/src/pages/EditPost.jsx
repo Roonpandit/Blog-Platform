@@ -6,23 +6,52 @@ import Alert from "../components/common/Alert";
 import Loader from "../components/common/Loader";
 import "./PostForm.css";
 
-// Icons (you can replace these with any icon library you prefer)
 const IconEdit = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="20"
+    height="20"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
     <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
   </svg>
 );
 
 const IconBack = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="18"
+    height="18"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <line x1="19" y1="12" x2="5" y2="12"></line>
     <polyline points="12 19 5 12 12 5"></polyline>
   </svg>
 );
 
 const IconImage = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="18"
+    height="18"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
     <circle cx="8.5" cy="8.5" r="1.5"></circle>
     <polyline points="21 15 16 10 5 21"></polyline>
@@ -30,14 +59,34 @@ const IconImage = () => (
 );
 
 const IconTrash = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="16"
+    height="16"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <polyline points="3 6 5 6 21 6"></polyline>
     <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
   </svg>
 );
 
 const IconTag = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="18"
+    height="18"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
     <line x1="7" y1="7" x2="7.01" y2="7"></line>
   </svg>
@@ -71,7 +120,6 @@ const EditPost = () => {
       const response = await api.get(`/api/posts/${id}`);
       const post = response.data;
 
-      // Check if user is the author
       if (user._id !== post.author._id && user.role !== "admin") {
         setError("You are not authorized to edit this post");
         return;
@@ -118,7 +166,6 @@ const EditPost = () => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
 
-    // Clear field error when user starts typing
     if (formErrors[name]) {
       setFormErrors({ ...formErrors, [name]: "" });
     }
@@ -130,7 +177,6 @@ const EditPost = () => {
     if (file) {
       setFormData({ ...formData, image: file });
 
-      // Create preview
       const reader = new FileReader();
       reader.onloadend = () => {
         setImagePreview(reader.result);
@@ -149,7 +195,6 @@ const EditPost = () => {
       setSubmitting(true);
 
       try {
-        // Create FormData object for file upload
         const postData = new FormData();
         postData.append("title", formData.title);
         postData.append("content", formData.content);
@@ -182,7 +227,6 @@ const EditPost = () => {
     }
   };
 
-  // Skeleton loading UI
   if (loading) {
     return (
       <div className="post-form-page">
@@ -236,7 +280,9 @@ const EditPost = () => {
               className={formErrors.title ? "error" : ""}
               placeholder="Enter post title"
             />
-            {formErrors.title && <div className="error-message">{formErrors.title}</div>}
+            {formErrors.title && (
+              <div className="error-message">{formErrors.title}</div>
+            )}
           </div>
 
           <div className="form-group">
@@ -250,7 +296,9 @@ const EditPost = () => {
               className={formErrors.content ? "error" : ""}
               placeholder="Write your post content here..."
             ></textarea>
-            {formErrors.content && <div className="error-message">{formErrors.content}</div>}
+            {formErrors.content && (
+              <div className="error-message">{formErrors.content}</div>
+            )}
           </div>
 
           <div className="form-group">
@@ -271,12 +319,20 @@ const EditPost = () => {
             <label htmlFor="image">
               <IconImage /> Featured Image (optional)
             </label>
-            <input type="file" id="image" name="image" onChange={handleImageChange} accept="image/*" />
+            <input
+              type="file"
+              id="image"
+              name="image"
+              onChange={handleImageChange}
+              accept="image/*"
+            />
 
             {currentImage && !imagePreview && (
               <div className="image-preview">
                 <img src={currentImage || "/placeholder.svg"} alt="Current" />
-                <p className="image-note">Current image will be kept unless you select a new one</p>
+                <p className="image-note">
+                  Current image will be kept unless you select a new one
+                </p>
               </div>
             )}
 
@@ -298,10 +354,18 @@ const EditPost = () => {
           </div>
 
           <div className="button-group">
-            <button type="button" className="back-button" onClick={() => navigate(-1)}>
+            <button
+              type="button"
+              className="back-button"
+              onClick={() => navigate(-1)}
+            >
               <IconBack /> Cancel
             </button>
-            <button type="submit" className="post-form-button" disabled={submitting}>
+            <button
+              type="submit"
+              className="post-form-button"
+              disabled={submitting}
+            >
               {submitting ? "Updating..." : "Update Post"}
             </button>
           </div>

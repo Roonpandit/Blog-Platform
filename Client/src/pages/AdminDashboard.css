@@ -1,16 +1,17 @@
 .admin-dashboard {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   min-height: 100vh;
   background-color: #f5f5f7;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   padding: 20px 30px;
 }
 
-/* Admin Header Styles */
 .admin-dashboard .admin-header {
-  background: linear-gradient(135deg, #36b37e, #1e8a5f);
+  background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
   padding: 30px;
   color: white;
   border-radius: 12px;
@@ -22,14 +23,16 @@
 .admin-dashboard .admin-title {
   font-size: 2.2rem;
   margin: 0;
+  color: white;
   font-weight: 700;
   letter-spacing: -0.5px;
   display: flex;
   align-items: center;
+  font-family: "Times New Roman", Times, serif;
 }
 
 .admin-dashboard .admin-title::before {
-  content: '';
+  content: "";
   display: inline-block;
   width: 28px;
   height: 28px;
@@ -40,7 +43,6 @@
   background-position: center;
 }
 
-/* Admin Section Styles */
 .admin-dashboard .admin-section {
   background-color: white;
   border-radius: 12px;
@@ -61,7 +63,7 @@
 }
 
 .admin-dashboard .section-title::before {
-  content: '';
+  content: "";
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -72,7 +74,6 @@
   background-position: center;
 }
 
-/* User Table Styles */
 .admin-dashboard .user-table-container {
   overflow-x: auto;
   border-radius: 8px;
@@ -84,7 +85,7 @@
   border-collapse: collapse;
 }
 
-.admin-dashboard .user-table th, 
+.admin-dashboard .user-table th,
 .admin-dashboard .user-table td {
   padding: 14px 16px;
   text-align: left;
@@ -121,7 +122,6 @@
   background-color: rgba(255, 0, 0, 0.06);
 }
 
-/* Status Badge Styles */
 .admin-dashboard .status-badge {
   display: inline-block;
   padding: 4px 10px;
@@ -144,7 +144,6 @@
   border: 1px solid rgba(255, 59, 48, 0.2);
 }
 
-/* Action Buttons Styles */
 .admin-dashboard .user-actions {
   display: flex;
   gap: 8px;
@@ -185,7 +184,7 @@
 
 .admin-dashboard .action-button.unban {
   background-color: rgba(54, 179, 126, 0.1);
-  color: #36b37e;
+  color: #251e8a;
   border: 1px solid rgba(54, 179, 126, 0.2);
 }
 
@@ -193,7 +192,6 @@
   background-color: rgba(54, 179, 126, 0.2);
 }
 
-/* No Data Styles */
 .admin-dashboard .no-data {
   text-align: center;
   padding: 40px 0;
@@ -201,7 +199,6 @@
   font-style: italic;
 }
 
-/* Skeleton Loading */
 .admin-dashboard .skeleton-table {
   display: flex;
   flex-direction: column;
@@ -246,7 +243,6 @@
   }
 }
 
-/* Alert Styles */
 .admin-dashboard .alert {
   padding: 16px;
   border-radius: 8px;
@@ -276,7 +272,7 @@
 }
 
 .admin-dashboard .alert-message::before {
-  content: '';
+  content: "";
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -319,16 +315,15 @@
   }
 }
 
-/* Responsive Styles */
 @media (max-width: 1024px) {
   .admin-dashboard {
     padding: 15px;
   }
-  
+
   .admin-dashboard .admin-header {
     padding: 20px;
   }
-  
+
   .admin-dashboard .admin-title {
     font-size: 1.8rem;
   }
@@ -338,26 +333,26 @@
   .admin-dashboard .admin-header {
     padding: 16px;
   }
-  
+
   .admin-dashboard .admin-title {
     font-size: 1.6rem;
   }
-  
+
   .admin-dashboard .admin-section {
     padding: 16px;
   }
-  
-  .admin-dashboard .user-table th, 
+
+  .admin-dashboard .user-table th,
   .admin-dashboard .user-table td {
     padding: 12px 10px;
     font-size: 14px;
   }
-  
+
   .admin-dashboard .action-button {
     padding: 5px 10px;
     font-size: 12px;
   }
-  
+
   .admin-dashboard .user-actions {
     flex-direction: column;
     gap: 5px;

@@ -1,103 +1,89 @@
 .layout {
-    display: flex;
-    min-height: 100vh;
-    background-color: #f9f9f9;
-  }
-  
+  display: flex;
+  min-height: 100vh;
+  background-color: #f9f9f9;
+}
+
+.main-content {
+  flex: 1;
+  margin-left: 240px;
+  padding: 24px;
+  transition: margin-left 0.3s ease;
+}
+
+.main-content.sidebar-collapsed {
+  margin-left: 60px;
+}
+
+.content-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.mobile-sidebar-toggle {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 900;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #36b37e;
+  color: white;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  display: none;
+}
+
+@media (max-width: 992px) {
   .main-content {
-    flex: 1;
-    margin-left: 240px;
-    padding: 24px;
-    transition: margin-left 0.3s ease;
+    margin-left: 0;
+    padding: 16px;
   }
-  
+
   .main-content.sidebar-collapsed {
-    margin-left: 60px;
+    margin-left: 0;
   }
-  
-  .content-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    width: 100%;
-  }
-  
+
   .mobile-sidebar-toggle {
-    position: fixed;
-    top: 16px;
-    left: 16px;
-    z-index: 900;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: #36b37e;
-    color: white;
-    font-size: 18px;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    border: none;
-    cursor: pointer;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    display: none;
   }
-  
-  /* Responsive Styles */
-  @media (max-width: 992px) {
-    .main-content {
-      margin-left: 0;
-      padding: 16px;
-    }
-    
-    .main-content.sidebar-collapsed {
-      margin-left: 0;
-    }
-    
-    .mobile-sidebar-toggle {
-      display: flex;
-    }
-  }
-  
-  /* Main styles for all pages */
-  body {
-    font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    margin: 0;
-    padding: 0;
-    color: #333;
-    background-color: #f9f9f9;
-  }
-  
-  a {
-    text-decoration: none;
-    color: #36b37e;
-  }
-  
-  button {
-    cursor: pointer;
-  }
-  
-  h1, h2, h3, h4, h5, h6 {
-    margin-top: 0;
-    color: #333;
-  }
-  
-  img {
-    max-width: 100%;
-  }
-  
-  /* Additional CSS variables for consistent styling */
-  :root {
-    --primary: #36b37e;
-    --primary-dark: #1e8a5f;
-    --primary-light: #eef7f2;
-    --text-primary: #333;
-    --text-secondary: #666;
-    --bg-light: #f9f9f9;
-    --bg-white: #fff;
-    --border-light: #f0f0f0;
-    --border-medium: #e0e0e0;
-    --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.05);
-    --shadow-md: 0 2px 12px rgba(0, 0, 0, 0.08);
-    --border-radius-sm: 4px;
-    --border-radius-md: 8px;
-    --border-radius-lg: 16px;
-  }
+}
+
+body {
+  font-family: "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+    "Helvetica Neue", sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #333;
+  background-color: #f9f9f9;
+}
+
+a {
+  text-decoration: none;
+  color: #36b37e;
+}
+
+button {
+  cursor: pointer;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0;
+  color: #333;
+}
+
+img {
+  max-width: 100%;
+}

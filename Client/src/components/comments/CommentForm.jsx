@@ -1,35 +1,39 @@
-import { useState } from "react"
-import "./CommentForm.css"
+import { useState } from "react";
+import "./CommentForm.css";
 
-// Skeleton component for loading state
 const CommentFormSkeleton = () => {
   return (
     <div className="comment-form-skeleton">
       <div className="skeleton-textarea"></div>
       <div className="skeleton-button"></div>
     </div>
-  )
-}
+  );
+};
 
-const CommentForm = ({ onSubmit, initialValue = "", buttonText = "Submit", isLoading = false }) => {
-  const [content, setContent] = useState(initialValue)
-  const [error, setError] = useState("")
+const CommentForm = ({
+  onSubmit,
+  initialValue = "",
+  buttonText = "Submit",
+  isLoading = false,
+}) => {
+  const [content, setContent] = useState(initialValue);
+  const [error, setError] = useState("");
 
   const handleSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
     if (!content.trim()) {
-      setError("Comment cannot be empty")
-      return
+      setError("Comment cannot be empty");
+      return;
     }
 
-    onSubmit(content)
-    setContent("")
-    setError("")
-  }
+    onSubmit(content);
+    setContent("");
+    setError("");
+  };
 
   if (isLoading) {
-    return <CommentFormSkeleton />
+    return <CommentFormSkeleton />;
   }
 
   return (
@@ -48,7 +52,7 @@ const CommentForm = ({ onSubmit, initialValue = "", buttonText = "Submit", isLoa
         {buttonText}
       </button>
     </form>
-  )
-}
+  );
+};
 
-export default CommentForm
+export default CommentForm;

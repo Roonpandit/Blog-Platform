@@ -1,6 +1,10 @@
 .user-posts-page {
-  width: 100%;
-  padding: 40px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  padding: 40px 100px;
 }
 
 .user-posts-header {
@@ -15,6 +19,7 @@
   position: relative;
   display: inline-block;
   padding-bottom: 16px;
+  font-family: 'Times New Roman', Times, serif;
 }
 
 .user-posts-title::after {
@@ -24,7 +29,7 @@
   left: 0;
   width: 70px;
   height: 4px;
-  background-color: #36b37e;
+  background-color: #251e8a;
   border-radius: 2px;
 }
 
@@ -58,6 +63,8 @@
 .user-posts-details {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .user-posts-count {

@@ -1,90 +1,88 @@
-"use client"
+import { createContext, useState, useEffect } from "react";
+import { api } from "../utils/api";
 
-import { createContext, useState, useEffect } from "react"
-import { api } from "../utils/api"
-
-export const AuthContext = createContext()
+export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null)
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(null)
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    const token = localStorage.getItem("token")
+    const token = localStorage.getItem("token");
     if (token) {
-      loadUserProfile(token)
+      loadUserProfile(token);
     } else {
-      setLoading(false)
+      setLoading(false);
     }
-  }, [])
+  }, []);
 
   const loadUserProfile = async (token) => {
     try {
       const response = await api.get("/api/auth/profile", {
         headers: { Authorization: `Bearer ${token}` },
-      })
-      setUser(response.data)
+      });
+      setUser(response.data);
     } catch (err) {
-      localStorage.removeItem("token")
-      setError("Session expired. Please login again.")
+      localStorage.removeItem("token");
+      setError("Session expired. Please login again.");
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   const register = async (userData) => {
-    setLoading(true)
+    setLoading(true);
     try {
-      const response = await api.post("/api/auth/register", userData)
-      localStorage.setItem("token", response.data.token)
-      setUser(response.data)
-      setError(null)
-      return response.data
+      const response = await api.post("/api/auth/register", userData);
+      localStorage.setItem("token", response.data.token);
+      setUser(response.data);
+      setError(null);
+      return response.data;
     } catch (err) {
-      setError(err.response?.data?.message || "Registration failed")
-      throw err
+      setError(err.response?.data?.message || "Registration failed");
+      throw err;
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   const login = async (credentials) => {
-    setLoading(true)
+    setLoading(true);
     try {
-      const response = await api.post("/api/auth/login", credentials)
-      localStorage.setItem("token", response.data.token)
-      setUser(response.data)
-      setError(null)
-      return response.data
+      const response = await api.post("/api/auth/login", credentials);
+      localStorage.setItem("token", response.data.token);
+      setUser(response.data);
+      setError(null);
+      return response.data;
     } catch (err) {
-      setError(err.response?.data?.message || "Login failed")
-      throw err
+      setError(err.response?.data?.message || "Login failed");
+      throw err;
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   const updateProfile = async (userData) => {
-    setLoading(true)
+    setLoading(true);
     try {
-      const response = await api.put("/api/auth/profile", userData)
-      setUser(response.data)
-      localStorage.setItem("token", response.data.token)
-      setError(null)
-      return response.data
+      const response = await api.put("/api/auth/profile", userData);
+      setUser(response.data);
+      localStorage.setItem("token", response.data.token);
+      setError(null);
+      return response.data;
     } catch (err) {
-      setError(err.response?.data?.message || "Profile update failed")
-      throw err
+      setError(err.response?.data?.message || "Profile update failed");
+      throw err;
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   const logout = () => {
-    localStorage.removeItem("token")
-    setUser(null)
-  }
+    localStorage.removeItem("token");
+    setUser(null);
+  };
 
   return (
     <AuthContext.Provider
@@ -101,6 +99,5 @@ export const AuthProvider = ({ children }) => {
     >
       {children}
     </AuthContext.Provider>
-  )
-}
-
+  );
+};

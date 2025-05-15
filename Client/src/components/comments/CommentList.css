@@ -34,14 +34,15 @@
 
 .comment-list .comment-author {
   font-weight: 600;
-  color: #36b37e;
+  color: #251e8a;
   text-decoration: none;
   font-size: 15px;
   transition: color 0.2s ease;
+  font-family: "Times New Roman", Times, serif;
 }
 
 .comment-list .comment-author:hover {
-  color: #1e8a5f;
+  color: #15114f;
   text-decoration: underline;
 }
 
@@ -79,11 +80,11 @@
 }
 
 .comment-list .comment-action:hover {
-  background-color: rgba(54, 179, 126, 0.1);
+  background-color: rgba(23, 17, 85, 0.1);
 }
 
 .comment-list .comment-action.active {
-  color: #36b37e;
+  color: #251e8a;
 }
 
 .comment-list .comment-action.delete:hover {
@@ -109,7 +110,6 @@
   border: 1px dashed #e0e0e0;
 }
 
-/* Icons */
 .icon-heart:before {
   content: "♥";
 }
@@ -118,7 +118,6 @@
   content: "🗑";
 }
 
-/* Loading skeleton styles */
 .comment-list-skeleton .skeleton-comment {
   background-color: #ffffff;
   border-radius: 8px;

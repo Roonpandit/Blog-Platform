@@ -11,13 +11,13 @@
 }
 
 .favorite-posts-header::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -10px;
   left: 0;
   width: 60px;
   height: 4px;
-  background-color: #36b37e;
+  background-color: #251e8a;
   border-radius: 2px;
 }
 
@@ -28,12 +28,11 @@
   margin: 0;
 }
 
-/* Responsive adjustments */
 @media (max-width: 768px) {
   .favorite-posts-page {
     padding: 16px;
   }
-  
+
   .favorite-posts-title {
     font-size: 24px;
   }

@@ -67,18 +67,16 @@
   margin: 0;
 }
 
-/* Responsive adjustments */
 @media (max-width: 768px) {
   .post-list-container .post-list {
     grid-template-columns: 1fr;
   }
-  
+
   .post-list-container .post-list-title {
     font-size: 1.75rem;
   }
 }
 
-/* Loading state styles */
 .post-list-container .skeleton-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));

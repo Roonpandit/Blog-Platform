@@ -76,7 +76,6 @@
   }
 }
 
-/* Responsive adjustments */
 @media (max-width: 900px) {
   .post-list-skeleton {
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));

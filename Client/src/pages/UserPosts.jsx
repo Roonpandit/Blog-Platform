@@ -62,37 +62,39 @@ const UserPosts = () => {
 
   const fetchUserInfo = async () => {
     try {
-      // We'll make a request to get the first post to extract the username
       const response = await api.get(`/api/posts/user/${userId}?page=1&limit=1`)
-
+  
       if (response.data.posts && response.data.posts.length > 0) {
-        setUsername(response.data.posts[0].author.username)
-        // If available, set the avatar
-        if (response.data.posts[0].author.avatar) {
-          setUserAvatar(response.data.posts[0].author.avatar)
-        }
-        // Set post count if available in response
-        setPostCount(response.data.posts.length)
-
+        const author = response.data.posts[0].author
+        setUsername(author.username)
+        if (author.avatar) setUserAvatar(author.avatar)
+        setPostCount(response.data.totalCount || response.data.posts.length)
       } else {
-        // If user has no posts, we need to fetch user info directly
+        // No posts, try to fetch just the user info
         const userResponse = await api.get(`/api/users/${userId}`)
-        setUsername(userResponse.data.username)
-        
-        if (userResponse.data.avatar) {
-          setUserAvatar(userResponse.data.avatar)
+  
+        if (userResponse.data && typeof userResponse.data === 'object') {
+          const userData = userResponse.data
+  
+          if (userData.username) {
+            setUsername(userData.username)
+            if (userData.avatar) setUserAvatar(userData.avatar)
+            setPostCount(0)
+          } else {
+            setError("User exists but has no profile info.")
+          }
+        } else {
+          setError("User not found.")
         }
-        
-        // User has no posts
-        setPostCount(0)
       }
     } catch (err) {
-      setError("Error loading user information")
-      console.error(err)
+      console.error("Error loading user info:", err)
+      setError("This user has no posts.")
     } finally {
       setLoading(false)
     }
   }
+  
 
   if (loading) {
     return <UserPostsSkeleton />

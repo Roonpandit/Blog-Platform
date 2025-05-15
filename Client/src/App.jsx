@@ -21,9 +21,9 @@ function App() {
   return (
     <AuthProvider>
       <Router>
-        <div className="app-container">
+        {/* <div className="app-container"> */}
           <Sidebar />
-          <main className="main-content">
+          <main >
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
@@ -76,7 +76,7 @@ function App() {
             </Routes>
           </main>
           <Footer />
-        </div>
+        {/* </div> */}
       </Router>
     </AuthProvider>
   )

@@ -1,7 +1,6 @@
-// Layout.jsx
-import React, { useState, useEffect } from 'react';
-import Sidebar from '../layout/Header';
-import './Layout.css';
+import React, { useState, useEffect } from "react";
+import Sidebar from "../layout/Header";
+import "./Layout.css";
 
 const Layout = ({ children }) => {
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
@@ -13,10 +12,10 @@ const Layout = ({ children }) => {
     };
 
     handleResize();
-    window.addEventListener('resize', handleResize);
-    
+    window.addEventListener("resize", handleResize);
+
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
@@ -33,17 +32,19 @@ const Layout = ({ children }) => {
   return (
     <div className="layout">
       <Sidebar isCollapsed={sidebarCollapsed} toggleSidebar={toggleSidebar} />
-      
-      <main className={`main-content ${sidebarCollapsed ? 'sidebar-collapsed' : ''}`}>
+
+      <main
+        className={`main-content ${
+          sidebarCollapsed ? "sidebar-collapsed" : ""
+        }`}
+      >
         {isMobile && (
           <button className="mobile-sidebar-toggle" onClick={toggleSidebar}>
-            {sidebarCollapsed ? '☰' : '✕'}
+            {sidebarCollapsed ? "☰" : "✕"}
           </button>
         )}
-        
-        <div className="content-container">
-          {children}
-        </div>
+
+        <div className="content-container">{children}</div>
       </main>
     </div>
   );

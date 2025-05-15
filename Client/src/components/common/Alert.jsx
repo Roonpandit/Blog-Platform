@@ -1,8 +1,7 @@
-// Alert.jsx
-import React, { useState, useEffect } from 'react';
-import './Alert.css';
+import React, { useState, useEffect } from "react";
+import "./Alert.css";
 
-const Alert = ({ type = 'info', message, duration = 5000, onClose }) => {
+const Alert = ({ type = "info", message, duration = 5000, onClose }) => {
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
@@ -11,7 +10,7 @@ const Alert = ({ type = 'info', message, duration = 5000, onClose }) => {
         setVisible(false);
         if (onClose) onClose();
       }, duration);
-      
+
       return () => clearTimeout(timer);
     }
   }, [duration, onClose]);
@@ -24,17 +23,19 @@ const Alert = ({ type = 'info', message, duration = 5000, onClose }) => {
   if (!visible) return null;
 
   const alertIcon = {
-    success: '✅',
-    error: '❌',
-    warning: '⚠️',
-    info: 'ℹ️'
+    success: "✅",
+    error: "❌",
+    warning: "⚠️",
+    info: "ℹ️",
   };
 
   return (
     <div className={`alert alert-${type}`}>
       <div className="alert-icon">{alertIcon[type]}</div>
       <div className="alert-message">{message}</div>
-      <button className="alert-close" onClick={handleClose}>×</button>
+      <button className="alert-close" onClick={handleClose}>
+        ×
+      </button>
     </div>
   );
 };

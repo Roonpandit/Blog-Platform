@@ -24,8 +24,8 @@
 
 .comment-form .form-control:focus {
   outline: none;
-  border-color: #36b37e;
-  box-shadow: 0 0 0 3px rgba(54, 179, 126, 0.2);
+  border-color: #251e8a;
+  box-shadow: 0 0 0 3px rgba(22, 12, 107, 0.2);
 }
 
 .comment-form .form-control.error {
@@ -40,7 +40,7 @@
 }
 
 .comment-form .btn-primary {
-  background-color: #36b37e;
+  background-color: #251e8a;
   color: white;
   border: none;
   border-radius: 6px;
@@ -52,14 +52,13 @@
 }
 
 .comment-form .btn-primary:hover {
-  background-color: #1e8a5f;
+  background-color: #171260;
 }
 
 .comment-form .btn-primary:active {
   transform: translateY(1px);
 }
 
-/* Loading skeleton styles */
 .comment-form-skeleton {
   background-color: #f5f5f5;
   border-radius: 8px;

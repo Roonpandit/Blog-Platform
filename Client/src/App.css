@@ -1,7 +1,6 @@
-/* Global styles for the blog platform */
 :root {
-  --primary: #36b37e;
-  --primary-dark: #1e8a5f;
+  --primary: #251e8a;
+  --primary-dark:#1a146c;
   --primary-light: #eef7f2;
   --text-primary: #333;
   --text-secondary: #666;

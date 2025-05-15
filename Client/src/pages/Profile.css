@@ -95,3 +95,8 @@
   }
 }
 
+.readonly-input {
+  cursor: not-allowed;
+  background-color: #f0f0f0; /* optional: subtle visual cue */
+  color: #888; /* optional: lighter text */
+}

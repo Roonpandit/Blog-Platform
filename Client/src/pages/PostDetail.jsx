@@ -6,7 +6,6 @@ import { api } from "../utils/api"
 import { AuthContext } from "../context/AuthContext"
 import CommentForm from "../components/comments/CommentForm"
 import CommentList from "../components/comments/CommentList"
-import Loader from "../components/common/Loader"
 import Alert from "../components/common/Alert"
 import { formatDate } from "../utils/helpers"
 import "./PostDetail.css"
@@ -52,13 +51,17 @@ const PostDetail = () => {
   const handleFavoritePost = async () => {
     try {
       await api.post(`/api/posts/${id}/favorite`)
-      // We don't need to update the post state here
-      // Just force a re-render to show the updated favorite status
+      const updatedFavorites = isFavorite
+        ? user.favoritePosts.filter((pid) => pid !== post._id)
+        : [...user.favoritePosts, post._id]
+      
+      user.favoritePosts = updatedFavorites
       setPost({ ...post })
     } catch (err) {
       console.error("Error favoriting post:", err)
     }
   }
+  
 
   const handleDeletePost = async () => {
     if (window.confirm("Are you sure you want to delete this post?")) {
@@ -120,7 +123,7 @@ const PostDetail = () => {
   }
 
   if (loading) {
-    return <Loader />
+
   }
 
   if (error) {

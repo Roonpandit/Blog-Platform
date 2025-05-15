@@ -17,7 +17,7 @@
 }
 
 .post-form-title {
-  color: #1e8a5f;
+  color: #251e8a;
   font-size: 2rem;
   margin-bottom: 1.5rem;
   border-bottom: 2px solid #e0f2ea;
@@ -53,7 +53,7 @@
 
 .post-form-page .form-group input[type="text"]:focus,
 .post-form-page .form-group textarea:focus {
-  border-color: #36b37e;
+  border-color: #251e8a;
   box-shadow: 0 0 0 3px rgba(54, 179, 126, 0.1);
   outline: none;
 }
@@ -117,7 +117,7 @@
 }
 
 .post-form-button {
-  background-color: #36b37e;
+  background-color: #251e8a;
   color: white;
   border: none;
   border-radius: 4px;
@@ -134,7 +134,7 @@
 }
 
 .post-form-button:hover {
-  background-color: #1e8a5f;
+  background-color: #120e4b;
 }
 
 .post-form-button:disabled {

@@ -1,7 +1,7 @@
-import "./Footer.css"
+import "./Footer.css";
 
 const Footer = () => {
-  const currentYear = new Date().getFullYear()
+  const currentYear = new Date().getFullYear();
 
   return (
     <footer className="footer">
@@ -10,7 +10,8 @@ const Footer = () => {
           <div className="footer-section">
             <h3 className="footer-title">BlogPlatform</h3>
             <p className="footer-description">
-              Share your thoughts and connect with others through our blogging platform.
+              Share your thoughts and connect with others through our blogging
+              platform.
             </p>
           </div>
 
@@ -40,12 +41,13 @@ const Footer = () => {
         </div>
 
         <div className="footer-bottom">
-          <p className="copyright">&copy; {currentYear} BlogPlatform. All rights reserved.</p>
+          <p className="copyright">
+            &copy; {currentYear} BlogPlatform. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>
-  )
-}
+  );
+};
 
-export default Footer
-
+export default Footer;

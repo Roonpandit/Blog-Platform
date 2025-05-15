@@ -18,7 +18,7 @@
   width: 100%;
   height: 220px;
   overflow: hidden;
-  position: relative;  
+  position: relative;
 }
 
 .post-cards .post-image img {
@@ -33,7 +33,6 @@
   flex: 1;
   display: flex;
   flex-direction: column;
- 
 }
 
 .post-cards .post-title {
@@ -48,10 +47,7 @@
   color: inherit;
   text-decoration: none;
   transition: color 0.2s ease;
-}
-
-.post-cards .post-title a:hover {
-  color: #36b37e;
+  font-family: "Times New Roman", Times, serif;
 }
 
 .post-cards .post-meta {
@@ -64,10 +60,11 @@
 
 .post-cards .post-meta .post-author {
   margin-right: 12px;
+  font-family: "Times New Roman", Times, serif;
 }
 
 .post-cards .post-meta .post-author a {
-  color: #1e8a5f;
+  color: #251e8a;
   font-weight: 600;
   text-decoration: none;
 }
@@ -96,8 +93,8 @@
 
 .post-cards .post-tag {
   font-size: 0.75rem;
-  background-color: rgba(54, 179, 126, 0.1);
-  color: #1e8a5f;
+  background-color: rgba(104, 124, 187, 0.1);
+  color: #251e8a;
   padding: 4px 8px;
   border-radius: 4px;
   text-decoration: none;
@@ -106,7 +103,7 @@
 }
 
 .post-cards .post-tag:hover {
-  background-color: rgba(54, 179, 126, 0.2);
+  background-color: rgba(10, 13, 92, 0.2);
 }
 
 .post-cards .post-excerpt {
@@ -125,7 +122,7 @@
 
 .post-cards .read-more {
   align-items: center;
-  color: #36b37e;
+  color: #251e8a;
   font-weight: 600;
   text-decoration: none;
   position: relative;
@@ -139,7 +136,7 @@
 }
 
 .post-cards .read-more:hover {
-  color: #1e8a5f;
+  color: #100c4c;
 }
 
 .post-cards .read-more:hover::after {
@@ -172,15 +169,14 @@
 }
 
 .post-cards .post-action.active {
-  color: #36b37e;
+  color: #251e8a;
 }
 
 .post-cards .post-action:hover {
-  background-color: rgba(54, 179, 126, 0.1);
-  color: #36b37e;
+  background-color: rgba(29, 14, 91, 0.1);
+  color: #251e8a;
 }
 
-/* Skeleton loading styles */
 .post-cards.skeleton .post-image {
   background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
   background-size: 200% 100%;
@@ -222,7 +218,6 @@
   }
 }
 
-/* Icons using CSS for now - replace with SVG icons later */
 .post-cards .icon-heart::before {
   content: "♥";
 }
